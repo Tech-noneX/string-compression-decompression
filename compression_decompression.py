@@ -9,9 +9,9 @@ class DeCompression:
     
     def initialize(self):
         if self.input_string[0].isdigit():
-            self.decompression(self.input_string)
+            return self.decompression(self.input_string)
         elif self.input_string[0].isalpha():
-            self.compression(self.input_string)
+            return self.compression(self.input_string)
         else:
             return "Invalid input"
 
@@ -44,3 +44,9 @@ class DeCompression:
             result.append(int(seq1[0]) * seq1[1])
             seq = seq[2:]
         return ''.join(result)
+
+user_input = input("Enter seq of letters example:'aabbcc'"
+                   " or number followed by letter example:'4a2b5n'\n:"
+                   ).strip()
+dc = DeCompression(input_string=user_input)
+print(dc.initialize())
