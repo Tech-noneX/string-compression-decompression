@@ -9,9 +9,9 @@ class DeCompression:
     
     def initialize(self):
         if self.input_string[0].isdigit():
-            pass
+            self.decompression(self.input_string)
         elif self.input_string[0].isalpha():
-            pass
+            self.compression(self.input_string)
         else:
             return "Invalid input"
 
@@ -27,4 +27,20 @@ class DeCompression:
         seq = seq.split()
         for i in seq:
             result.append(str(len(i)) + i[0])
+        return ''.join(result)
+
+
+    def decompression(self, decompress):
+        result = []
+        seq = ''
+        for i in decompress:
+            if i.isdigit():
+                seq += i
+            else:
+                seq += ' ' + i + ' '
+        seq = seq.split()
+        while seq:
+            seq1 = seq[:2]
+            result.append(int(seq1[0]) * seq1[1])
+            seq = seq[2:]
         return ''.join(result)
